@@ -4,9 +4,9 @@ import LinkedinIcon from "../assets/svg/LinkedinIcon";
 import ExperienceIcon from "../assets/svg/WorkExperienceIcon";
 
 const ListContacts = [
-  { name: "Github", icon: GithubIcon, link: "https://github.com/COLADOXD" },
-  { name: "Linkedin", icon: LinkedinIcon, link: "https://linkedin.com/in/mateo-chacon-4a45a52b2/" },
-  { name: "Email", icon: ExperienceIcon, link: "mailto:xdmate90@gmail.com" },
+  { name: "GitHub", icon: GithubIcon, link: "https://github.com/SebastianChacon" },
+  { name: "LinkedIn", icon: LinkedinIcon, link: "https://www.linkedin.com/in/mateo-chacon-4a45a52b2/" },
+  { name: "Email", icon: ExperienceIcon, link: "mailto:chacontsebastian@gmail.com" },
 ];
 
 export const ContactComponent = () => {
