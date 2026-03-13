@@ -3,10 +3,9 @@ import { NavComponent } from "./NavComponent";
 
 export const HeaderComponent = () => {
   return (
-    <div className="max-w-[800px]">
+    <div className="w-full max-w-3xl">
       <NavComponent />
       <AvatarComponent />
-      <div className="bg-gray-700 h-[1px] my-10" />
     </div>
   );
 };

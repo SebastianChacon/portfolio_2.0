@@ -1,3 +1,4 @@
+import React from "react";
 import {
   AstroIcon,
   DartIcon,
@@ -12,41 +13,89 @@ import {
   TypeScriptIcon,
   VueIcon,
 } from "../assets/svg/LanguagesIcons";
-import TechnologiesIcon from "../assets/svg/Technologies";
+import { useScrollReveal } from "../hooks/useScrollReveal";
 
-const Language = [
-  { name: "React", icon: ReactIcon },
-  { name: "TypeScript", icon: TypeScriptIcon },
-  { name: "Svelte", icon: SvelteIcon },
-  { name: "Vue", icon: VueIcon },
-  { name: "Flutter", icon: FlutterIcon },
-  { name: "Tailwind CSS", icon: TailwindIcon },
-  { name: "Firebase", icon: FirebaseIcon },
-  { name: "Supabase", icon: SupabaseIcon },
-  { name: "Astro", icon: AstroIcon },
-  { name: "JavaScript", icon: JavaScriptIcon },
-  { name: "Dart", icon: DartIcon },
-  { name: "HTML", icon: HTMLIcon },
+type IconComponent = (props: { className: string }) => React.ReactElement;
+
+interface Skill {
+  name: string;
+  icon: IconComponent;
+}
+
+interface SkillCategory {
+  label: string;
+  skills: Skill[];
+}
+
+const SkillCategories: SkillCategory[] = [
+  {
+    label: "Core",
+    skills: [
+      { name: "React", icon: ReactIcon },
+      { name: "TypeScript", icon: TypeScriptIcon },
+      { name: "Tailwind CSS", icon: TailwindIcon },
+      { name: "JavaScript", icon: JavaScriptIcon },
+    ],
+  },
+  {
+    label: "Frameworks",
+    skills: [
+      { name: "Svelte", icon: SvelteIcon },
+      { name: "Vue", icon: VueIcon },
+      { name: "Astro", icon: AstroIcon },
+      { name: "Flutter", icon: FlutterIcon },
+    ],
+  },
+  {
+    label: "Backend & Data",
+    skills: [
+      { name: "Firebase", icon: FirebaseIcon },
+      { name: "Supabase", icon: SupabaseIcon },
+    ],
+  },
+  {
+    label: "Other",
+    skills: [
+      { name: "HTML", icon: HTMLIcon },
+      { name: "Dart", icon: DartIcon },
+    ],
+  },
 ];
 
 export const LanguagesComponent = () => {
+  const ref = useScrollReveal();
+
   return (
-    <div className="flex flex-col w-full max-w-[800px] items-start pb-10">
-      <div className="flex items-center justify-center pb-10">
-        <TechnologiesIcon className="size-12 dark:text-white mr-4" />
-        <h1>Technologies</h1>
-      </div>
-      <div className="grid grid-cols-3 md:grid-cols-4 gap-5 md:gap-10 mb-10 w-full rounded-xl border-[1px] border-gray-200 shadow-2xl shadow-gray-300 dark:border-gray-800 py-10">
-        {Language.map((language, key) => {
-          const IconComponent = language.icon;
-          return (
-            <div key={key} className="flex flex-col items-center">
-              <IconComponent className="w-10 h-10 mb-2" />
-              <h3 className="text-2xl text-gray-900 dark:text-gray-300">{language.name}</h3>
+    <section
+      id="skills"
+      ref={ref as React.RefObject<HTMLElement>}
+      className="reveal w-full py-12"
+    >
+      {/* Section heading */}
+      <h2 className="text-xs font-semibold tracking-widest uppercase text-gray-400 dark:text-gray-500 mb-8">
+        Technologies
+      </h2>
+
+      <div className="flex flex-col gap-6">
+        {SkillCategories.map(({ label, skills }) => (
+          <div key={label}>
+            <p className="text-xs uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-3 font-medium">
+              {label}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {skills.map(({ name, icon: Icon }) => (
+                <span
+                  key={name}
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-gray-100 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-default"
+                >
+                  <Icon className="size-4" />
+                  {name}
+                </span>
+              ))}
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
-    </div>
+    </section>
   );
 };

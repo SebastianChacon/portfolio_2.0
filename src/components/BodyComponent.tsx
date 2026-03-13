@@ -1,16 +1,25 @@
-import { LanguagesComponent } from "./LanguagesComponent";
-import { ProjectsComponent } from "./ProjectsComponent";
 import { WorkExperienceComponent } from "./WorkExperienceComponent";
+import { ProjectsComponent } from "./ProjectsComponent";
+import { AboutMeComponent } from "./AboutMeComponent";
+import { LanguagesComponent } from "./LanguagesComponent";
+import { ContactComponent } from "./ContactComponent";
+
+const Divider = () => (
+  <div className="border-t border-gray-100 dark:border-gray-800/60" />
+);
 
 export const BodyComponent = () => {
   return (
-    <div className="max-w-[800px]">
+    <div className="w-full max-w-3xl">
       <WorkExperienceComponent />
-      <div className="bg-gray-700 w-full h-[1px] my-10" />
+      <Divider />
       <ProjectsComponent />
-      <div className="bg-gray-700 w-full h-[1px] my-10" />
+      <Divider />
+      <AboutMeComponent />
+      <Divider />
       <LanguagesComponent />
-      <div className="bg-gray-700 w-full h-[1px] my-10" />
+      <Divider />
+      <ContactComponent />
     </div>
   );
 };
