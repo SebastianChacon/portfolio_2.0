@@ -51,6 +51,19 @@ export const ContactComponent = () => {
           LinkedIn
         </a>
 
+        {/* Resume */}
+        <a
+          href="/Sebastian_Chacon_Resume.pdf"
+          download
+          className="inline-flex items-center gap-2 px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 text-sm font-medium text-gray-700 dark:text-gray-300 hover:border-gray-400 dark:hover:border-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"
+        >
+          <svg className="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+              d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+          </svg>
+          CV
+        </a>
+
         {/* GitHub */}
         <a
           href="https://github.com/SebastianChacon"

@@ -3,12 +3,27 @@ import { useScrollReveal } from "../hooks/useScrollReveal";
 
 const Experiences = [
   {
-    date: "Feb 2024 – Present",
+    date: "Jan 2026 – Present",
+    company: "Self-Employed",
+    title: "Freelance Full Stack Developer",
+    type: "Freelance · Remote",
+    bullets: [
+      "Designed and shipped 4 production web applications for clients in loyalty, real estate, tech media, and web services.",
+      "Built full-stack solutions with React, TypeScript, Firebase, Supabase, and Tailwind CSS — deployed on Vercel with custom domains.",
+      "Implemented authentication, real-time databases, Row Level Security, and SEO optimization (Schema.org) across all projects.",
+    ],
+  },
+  {
+    date: "Feb 2024 – Jan 2026",
     company: "Punto593",
     title: "Full Stack Engineer",
-    type: "Full-time · Remote",
-    description:
-      "Built and shipped production web applications for clients across multiple industries using Svelte and Supabase. Developed real-time database integrations and authentication flows with Row Level Security. Handled the full software development lifecycle: planning, development, testing, and production deployment.",
+    type: "Full-time · Ecuador (Remote)",
+    bullets: [
+      "Core developer of Ganafy (ganafy.com), a SaaS digital loyalty platform with Apple Wallet and Google Wallet integration serving small businesses across Ecuador.",
+      "Built the full-stack application using Svelte, Supabase, PostgreSQL, and TypeScript — real-time point tracking, QR scanning, push notifications, and analytics dashboard.",
+      "Implemented multi-tenant architecture with Row Level Security, role-based access, and automated wallet pass generation for iOS/Android.",
+      "Developed onboarding flow, admin dashboard, and marketing automation enabling businesses to launch loyalty programs in under 10 minutes.",
+    ],
   },
 ];
 
@@ -50,9 +65,14 @@ export const WorkExperienceComponent = () => {
               <p className="text-xs text-gray-400 dark:text-gray-500 mb-3">
                 {experience.type}
               </p>
-              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-                {experience.description}
-              </p>
+              <ul className="flex flex-col gap-1.5">
+                {experience.bullets.map((bullet, i) => (
+                  <li key={i} className="flex gap-2 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+                    <span className="mt-1.5 size-1 shrink-0 rounded-full bg-gray-400 dark:bg-gray-500" />
+                    {bullet}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         ))}

@@ -3,9 +3,9 @@ import { ThemeToggle } from "./ThemeToggle.tsx";
 
 export const NavComponent = () => {
   useEffect(() => {
-    const nav = document.getElementById("main-nav");
+    const wrapper = document.getElementById("nav-wrapper");
     const handler = () => {
-      nav?.classList.toggle("nav-scrolled", window.scrollY > 10);
+      wrapper?.classList.toggle("nav-scrolled", window.scrollY > 10);
     };
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
@@ -14,7 +14,7 @@ export const NavComponent = () => {
   return (
     <nav
       id="main-nav"
-      className="sticky top-0 z-50 py-3 flex flex-row justify-between items-center w-full max-w-3xl transition-all duration-200"
+      className="py-3 flex flex-row justify-between items-center w-full max-w-3xl transition-all duration-200"
     >
       {/* Left: avatar + name */}
       <div className="flex items-center gap-3">
@@ -50,8 +50,17 @@ export const NavComponent = () => {
         ))}
       </div>
 
-      {/* Right: theme toggle */}
-      <ThemeToggle />
+      {/* Right: resume + theme toggle */}
+      <div className="flex items-center gap-3">
+        <a
+          href="/Sebastian_Chacon_Resume.pdf"
+          download
+          className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-gray-200 dark:border-gray-700 text-xs font-medium text-gray-700 dark:text-gray-300 hover:border-gray-400 dark:hover:border-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"
+        >
+          CV
+        </a>
+        <ThemeToggle />
+      </div>
     </nav>
   );
 };
