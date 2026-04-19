@@ -53,7 +53,7 @@ export const NavComponent = () => {
       {/* Right: resume + theme toggle */}
       <div className="flex items-center gap-3">
         <a
-          href="/Sebastian_Chacon_Resume.pdf"
+          href="/Sebastian-Chacon_CV.pdf"
           download
           className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-gray-200 dark:border-gray-700 text-xs font-medium text-gray-700 dark:text-gray-300 hover:border-gray-400 dark:hover:border-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"
         >
