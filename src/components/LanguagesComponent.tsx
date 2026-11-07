@@ -14,6 +14,7 @@ import {
   VueIcon,
 } from "../assets/svg/LanguagesIcons";
 import { useScrollReveal } from "../hooks/useScrollReveal";
+import { SectionHeading } from "./SectionHeading";
 
 type IconComponent = (props: { className: string }) => React.ReactElement;
 
@@ -66,33 +67,24 @@ export const LanguagesComponent = () => {
   const ref = useScrollReveal();
 
   return (
-    <section
-      id="skills"
-      ref={ref as React.RefObject<HTMLElement>}
-      className="reveal w-full py-12"
-    >
-      {/* Section heading */}
-      <h2 className="text-xs font-semibold tracking-widest uppercase text-gray-400 dark:text-gray-500 mb-8">
-        Technologies
-      </h2>
+    <section id="skills" ref={ref as React.RefObject<HTMLElement>} className="reveal w-full scroll-mt-24 py-12">
+      <SectionHeading index="03" label="Stack" title="Tools I use daily" />
 
-      <div className="flex flex-col gap-6">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {SkillCategories.map(({ label, skills }) => (
-          <div key={label}>
-            <p className="text-xs uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-3 font-medium">
-              {label}
-            </p>
-            <div className="flex flex-wrap gap-2">
+          <div key={label} className="glass rounded-2xl p-5">
+            <h3 className="mb-3 font-mono text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">{label}</h3>
+            <ul className="flex flex-wrap gap-2">
               {skills.map(({ name, icon: Icon }) => (
-                <span
+                <li
                   key={name}
-                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-gray-100 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-default"
+                  className="inline-flex items-center gap-2 rounded-lg border border-zinc-200 bg-zinc-50 px-3 py-1.5 text-sm text-zinc-800 dark:border-white/10 dark:bg-white/[0.06] dark:text-zinc-100"
                 >
                   <Icon className="size-4" />
                   {name}
-                </span>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         ))}
       </div>

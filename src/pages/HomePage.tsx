@@ -6,14 +6,14 @@ import { NavComponent } from "../components/NavComponent";
 export const HomePage = () => {
   return (
     <div className="flex flex-col items-center">
-      <div id="nav-wrapper" className="sticky top-0 z-50 w-full flex justify-center px-4 transition-all duration-200">
+      <div id="nav-wrapper" className="sticky top-0 z-50 flex w-full justify-center px-4">
         <NavComponent />
       </div>
-      <div className="flex flex-col items-center px-4 w-full">
+      <main id="top" className="flex w-full flex-col items-center px-4">
         <HeaderComponent />
         <BodyComponent />
-        <FooterComponent />
-      </div>
+      </main>
+      <FooterComponent />
     </div>
   );
 };

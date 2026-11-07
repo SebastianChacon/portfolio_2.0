@@ -1,5 +1,6 @@
 import React from "react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
+import { SectionHeading } from "./SectionHeading";
 
 const Experiences = [
   {
@@ -31,52 +32,35 @@ export const WorkExperienceComponent = () => {
   const ref = useScrollReveal();
 
   return (
-    <section
-      id="work"
-      ref={ref as React.RefObject<HTMLElement>}
-      className="reveal w-full py-12"
-    >
-      {/* Section heading */}
-      <h2 className="text-xs font-semibold tracking-widest uppercase text-gray-400 dark:text-gray-500 mb-8">
-        Work Experience
-      </h2>
+    <section id="work" ref={ref as React.RefObject<HTMLElement>} className="reveal w-full scroll-mt-24 py-12">
+      <SectionHeading index="02" label="Experience" title="Where I've worked" />
 
-      <div className="flex flex-col gap-8">
-        {Experiences.map((experience, key) => (
-          <div key={key} className="flex flex-col md:flex-row gap-4 md:gap-8">
-            {/* Date column */}
-            <div className="md:w-36 shrink-0">
-              <span className="text-xs text-gray-400 dark:text-gray-500 tabular-nums">
+      <ol className="glass divide-y divide-zinc-200 rounded-2xl dark:divide-white/10">
+        {Experiences.map((experience) => (
+          <li key={experience.company} className="flex flex-col gap-3 p-6">
+            <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-1">
+              <div>
+                <h3 className="text-[17px] font-semibold text-zinc-950 dark:text-white">
+                  {experience.title} <span className="font-normal text-zinc-500 dark:text-zinc-400">·</span>{" "}
+                  {experience.company}
+                </h3>
+                <p className="mt-0.5 text-sm text-zinc-500 dark:text-zinc-400">{experience.type}</p>
+              </div>
+              <span className="font-mono text-[13px] tabular-nums text-zinc-500 dark:text-zinc-400">
                 {experience.date}
               </span>
             </div>
-
-            {/* Content column */}
-            <div className="flex-1">
-              <div className="flex flex-wrap items-center gap-2 mb-1">
-                <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
-                  {experience.title}
-                </h3>
-                <span className="text-sm text-gray-500 dark:text-gray-400">·</span>
-                <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">
-                  {experience.company}
-                </span>
-              </div>
-              <p className="text-xs text-gray-400 dark:text-gray-500 mb-3">
-                {experience.type}
-              </p>
-              <ul className="flex flex-col gap-1.5">
-                {experience.bullets.map((bullet, i) => (
-                  <li key={i} className="flex gap-2 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-                    <span className="mt-1.5 size-1 shrink-0 rounded-full bg-gray-400 dark:bg-gray-500" />
-                    {bullet}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+            <ul className="flex flex-col gap-1.5">
+              {experience.bullets.map((bullet) => (
+                <li key={bullet} className="flex gap-2.5 text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-300">
+                  <span className="mt-2.5 size-1 shrink-0 rounded-full bg-zinc-400 dark:bg-violet-300" />
+                  {bullet}
+                </li>
+              ))}
+            </ul>
+          </li>
         ))}
-      </div>
+      </ol>
     </section>
   );
 };

@@ -1,83 +1,54 @@
+const stats = [
+  { value: "2+", label: "Years in production" },
+  { value: "4", label: "Production projects" },
+  { value: "US", label: "Work authorized" },
+];
+
 export const AvatarComponent = () => {
   return (
-    <section className="flex flex-col items-center text-center pt-16 pb-20 w-full">
-
-      {/* Layer 1: Profile photo */}
-      <div className="hero-child mb-5">
-        <img
-          className="size-20 rounded-full ring-2 ring-gray-200 dark:ring-gray-700"
-          src="https://github.com/SebastianChacon.png"
-          alt="Sebastian Chacon"
-        />
-      </div>
-
-      {/* Layer 2: Availability badge */}
-      <div className="hero-child mb-5">
-        <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-green-500/10 text-green-600 dark:text-green-400 border border-green-500/20">
-          <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-          Available for full-time roles
+    <section className="flex w-full flex-col gap-6 pb-16 pt-20 md:pt-28">
+      <div className="hero-child">
+        <span className="glass inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[13px] text-zinc-700 dark:text-zinc-200">
+          <span className="size-2 rounded-full bg-green-500 shadow-[0_0_10px_rgba(74,222,128,0.9)] dark:bg-green-400" />
+          Open to full-time roles · New Jersey · Remote OK
         </span>
       </div>
 
-      {/* Layer 3: Name */}
-      <div className="hero-child mb-2">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 dark:text-white">
-          Sebastian Chacon
-        </h1>
-      </div>
+      <h1 className="hero-child max-w-[760px] text-[2.6rem] font-semibold leading-[1.05] tracking-[-0.035em] text-zinc-950 dark:text-white md:text-6xl">
+        Full stack developer shipping{" "}
+        <span className="bg-gradient-to-r from-violet-600 via-fuchsia-600 to-cyan-600 bg-clip-text text-transparent dark:from-white dark:via-violet-300 dark:to-cyan-300">
+          SaaS products
+        </span>{" "}
+        and client sites that are live today.
+      </h1>
 
-      {/* Layer 4: Role + Location */}
-      <div className="hero-child mb-5">
-        <p className="text-base md:text-lg text-gray-500 dark:text-gray-400 font-medium">
-          Frontend Developer · New Jersey, USA
-        </p>
-      </div>
+      <p className="hero-child max-w-2xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-300">
+        2+ years shipping production software for real clients — React, TypeScript, Svelte &amp; Supabase on the front and back end. Based in New Jersey with a Green Card, no sponsorship needed.
+      </p>
 
-      {/* Layer 5: Tagline — gradient used only here */}
-      <div className="hero-child mb-8 max-w-lg px-4">
-        <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-          Building fast, accessible web products for real clients — specialized in{" "}
-          <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-violet-600">
-            React, TypeScript & Svelte
-          </span>
-          .
-        </p>
-      </div>
-
-      {/* Layer 6: CTA buttons */}
-      <div className="hero-child flex gap-3 mb-10 flex-wrap justify-center">
-        <a
-          href="#projects"
-          className="px-5 py-2.5 rounded-lg text-sm font-medium bg-gray-900 text-white dark:bg-white dark:text-gray-900 hover:opacity-80 active:scale-95 transition-all"
-        >
-          View My Work
+      <div className="hero-child flex flex-wrap gap-3 pt-2">
+        <a href="#projects" className="btn-primary">
+          View my work
+          <svg className="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M5 12h14M13 5l7 7-7 7" />
+          </svg>
         </a>
-        <a
-          href="mailto:chacontsebastian@gmail.com"
-          className="px-5 py-2.5 rounded-lg text-sm font-medium border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-gray-500 dark:hover:border-gray-500 transition-colors"
-        >
-          Contact Me
+        <a href="https://github.com/SebastianChacon" target="_blank" rel="noopener noreferrer" className="btn-ghost">
+          GitHub
+        </a>
+        <a href="/Sebastian-Chacon_CV.pdf" download className="inline-flex h-11 items-center px-3 text-[15px] font-medium text-zinc-600 transition-colors hover:text-zinc-950 dark:text-zinc-300 dark:hover:text-white">
+          Download CV
         </a>
       </div>
 
-      {/* Layer 7: Quick stats */}
-      <div className="hero-child flex items-center gap-8 flex-wrap justify-center">
-        <div className="flex flex-col items-center">
-          <span className="text-2xl font-bold text-gray-900 dark:text-white">2+</span>
-          <span className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Years Experience</span>
-        </div>
-        <div className="w-px h-8 bg-gray-200 dark:bg-gray-700" />
-        <div className="flex flex-col items-center">
-          <span className="text-2xl font-bold text-gray-900 dark:text-white">4</span>
-          <span className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Production Projects</span>
-        </div>
-        <div className="w-px h-8 bg-gray-200 dark:bg-gray-700" />
-        <div className="flex flex-col items-center">
-          <span className="text-2xl font-bold text-gray-900 dark:text-white">US</span>
-          <span className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Work Authorized</span>
-        </div>
+      <div className="hero-child mt-6 grid max-w-xl grid-cols-3 gap-3">
+        {stats.map(({ value, label }) => (
+          <div key={label} className="glass rounded-xl px-4 py-3">
+            <p className="text-2xl font-semibold tracking-tight text-zinc-950 dark:text-white">{value}</p>
+            <p className="mt-0.5 text-xs text-zinc-500 dark:text-zinc-400">{label}</p>
+          </div>
+        ))}
       </div>
-
     </section>
   );
 };

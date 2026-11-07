@@ -2,41 +2,33 @@ import { useEffect, useState } from "react";
 import SunIcon from "../assets/svg/SunIcon";
 import MoonIcon from "../assets/svg/MoonIcon";
 
+type Theme = "light" | "dark";
+
 export const ThemeToggle = () => {
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
+  // index.html sets the initial class before paint (stored choice, else system preference)
+  const [theme, setTheme] = useState<Theme>(() =>
+    document.documentElement.classList.contains("dark") ? "dark" : "light"
+  );
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem("theme") as "light" | "dark";
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-    if (storedTheme) {
-      setTheme(storedTheme);
-    } else {
-      setTheme(prefersDark ? "dark" : "dark");
-    }
-  }, []);
-
-  useEffect(() => {
-    const root = document.documentElement;
-
-    if (theme === "dark") {
-      root.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      root.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
+    document.documentElement.classList.toggle("dark", theme === "dark");
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+    const next: Theme = theme === "light" ? "dark" : "light";
+    setTheme(next);
+    try {
+      localStorage.setItem("theme", next);
+    } catch {
+      // storage unavailable (private mode) — theme still applies for this visit
+    }
   };
 
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded text-gray-800 dark:text-gray-200 transition"
-      aria-label="Toggle theme"
+      className="inline-flex size-10 items-center justify-center rounded-full text-zinc-700 transition hover:bg-zinc-100 dark:text-zinc-200 dark:hover:bg-white/10"
+      aria-label={theme === "light" ? "Switch to dark theme" : "Switch to light theme"}
     >
       {theme === "light" ? <SunIcon /> : <MoonIcon />}
     </button>

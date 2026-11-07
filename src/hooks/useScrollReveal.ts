@@ -19,7 +19,7 @@ export function useScrollReveal(threshold = 0.12) {
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [threshold]);
 
   return ref;
 }

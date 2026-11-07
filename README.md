@@ -1,50 +1,45 @@
-# React + TypeScript + Vite
+# Sebastian Chacon — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio of Sebastian Chacon, full stack developer based in New Jersey.
 
-Currently, two official plugins are available:
+**Live:** [mchacon.vercel.app](https://mchacon.vercel.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## What's inside
 
-## Expanding the ESLint configuration
+- **Projects** — Ganafy (multi-tenant SaaS loyalty platform), Inmuebles Latam, ZonaTech Latam and HazMiWeb, with highlights and links to the live sites and code.
+- **Case study** — how Ganafy is built, from the Svelte dashboard to Supabase, Row Level Security and Apple/Google Wallet passes.
+- **Experience, stack, about and contact** sections, plus a downloadable CV.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Stack
 
-- Configure the top-level `parserOptions` property like this:
+- React 18 + TypeScript
+- Vite 6 (SWC)
+- Tailwind CSS 3 — light and dark themes (`class` strategy), "liquid glass" surfaces defined in `src/index.css`
+- Geist / Geist Mono fonts
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Run locally
+
+```bash
+npm install
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Other scripts:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+npm run build    # type-check and build to dist/
+npm run lint     # ESLint
+npm run preview  # serve the production build
 ```
+
+## Project structure
+
+```
+src/
+  components/   page sections (Nav, Hero, Projects, Experience, Stack, About, Contact, Footer)
+  hooks/        useScrollReveal — fades sections in on scroll
+  assets/       project screenshots (webp) and SVG icons
+public/         CV (PDF), favicon and Open Graph image
+```
+
+Content (projects, experience, skills) lives as typed arrays at the top of each section component.
