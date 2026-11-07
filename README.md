@@ -40,6 +40,7 @@ src/
   hooks/        useScrollReveal — fades sections in on scroll
   assets/       project screenshots (webp) and SVG icons
 public/         CV (PDF), favicon and Open Graph image
+cv/             build_cv.py — generates the Harvard-style CV PDF (python cv/build_cv.py public/Sebastian-Chacon_CV.pdf)
 ```
 
 Content (projects, experience, skills) lives as typed arrays at the top of each section component.
